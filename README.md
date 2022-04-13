@@ -11,7 +11,6 @@ The idea is to have a newer release of Loop with the additional xDrip client.
 1. Open terminal
 2. Copy/Paste this code into terminal: 
 
-Master Branch with support for xDrip client
 *`/bin/bash -c "$(curl -fsSL https://bit.ly/3uFzdyy)"`*
 
 3. Hit Enter
