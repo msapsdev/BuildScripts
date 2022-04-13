@@ -3,7 +3,6 @@ echo .
 echo .     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/msapsdev/BuildScripts/main/loop-master-with-xdrip.sh)"
 echo .
 
-SCRIPT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 LOOP_BUILD=$(date +'%y%m%d-%H%M')
 BUILDLOOP_DIR=~/Downloads/BuildLoop
 LOOP_DIR=$BUILDLOOP_DIR/Loop-Master-xDrip-$LOOP_BUILD
@@ -13,8 +12,6 @@ LOOP_WORKSPACE_BRANCH=master
 
 XDRIP_CLIENT_URL=https://github.com/loopnlearn/xdrip-client-swift.git
 XDRIP_CLIENT_BRANCH=freeaps
-
-XDRIP_PATCHES=$SCRIPT_DIR/xdrip
 
 mkdir -p $LOOP_DIR
 cd $LOOP_DIR
@@ -286,7 +283,7 @@ popd > /dev/null
 
 echo "# Patching xdrip-client-swift"
 pushd xdrip-client-swift > /dev/null
-patch -p0 <<EOF
+patch -p0 <<"EOF"
 diff --git xDripClient.xcodeproj/project.pbxproj xDripClient.xcodeproj/project.pbxproj
 index a7c9721..f6fa43a 100644
 --- xDripClient.xcodeproj/project.pbxproj
@@ -465,12 +462,12 @@ index a7c9721..f6fa43a 100644
  				SKIP_INSTALL = YES;
  				SWIFT_VERSION = 4.0;
 EOF
-popd > /dev/null
-cat > $LOOP_DIR/LoopWorkspace/xdrip-client-swift/xDripClient.xcconfig <<"EOF"
+cat > xDripClient.xcconfig <<"EOF"
 //  xDripClient.xcconfig
 //  Inherit main settings from global config
 #include? "../../../LoopConfigOverride.xcconfig"
 EOF
+popd > /dev/null
 
 if [ ! -f $BUILDLOOP_DIR/LoopConfigOverride.xcconfig ]; then
   echo "# Creating top level $BUILDLOOP_DIR/LoopConfigOverride.xcconfig"
@@ -486,7 +483,6 @@ MAIN_APP_BUNDLE_IDENTIFIER = com.\${DEVELOPMENT_TEAM}.loopkit
 EOF
 fi
 
-echo "cd $LOOP_DIR/LoopWorkspace"
 xed .
 
 cat <<EOF
