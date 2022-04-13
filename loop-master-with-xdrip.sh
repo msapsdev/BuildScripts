@@ -1,5 +1,9 @@
 echo      Launch this script by pasting this command into a black terminal window.  
 echo .
+echo .     /bin/bash -c "$(curl -fsSL https://bit.ly/3uFzdyy)"
+echo .
+echo .     or a longer:
+echo .
 echo .     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/msapsdev/BuildScripts/main/loop-master-with-xdrip.sh)"
 echo .
 
@@ -471,6 +475,9 @@ popd > /dev/null
 
 if [ ! -f $BUILDLOOP_DIR/LoopConfigOverride.xcconfig ]; then
   echo "# Creating top level $BUILDLOOP_DIR/LoopConfigOverride.xcconfig"
+  echo "# Please note that this file will also be useful if you run script from"
+  echo "# https://github.com/loopnlearn/loopbuildscripts"
+  echo ""
   echo -n "Enter your Apple Development Team [ChangeMePlease]: "
   read DEVELOPMENT_TEAM
   [ -z "$DEVELOPMENT_TEAM" ] && DEVELOPMENT_TEAM=ChangeMePlease
@@ -499,5 +506,9 @@ cat <<EOF
 1. Select Any iOS Device in the scheme selection
 2. Select menu "Product", then "Archive"
 3. Wait some time for the Archiving to complete
-4. 
+4. Distribute App
+5. Ad-Hoc / Next
+6. No changes to Options page / Next
+7. Automatically Manage Signing / Next
+8. Wait for Loop to be packaged
 EOF
