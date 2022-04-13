@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 echo      Launch this script by pasting this command into a black terminal window.  
 echo .
 echo .     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/msapsdev/BuildScripts/main/loop-master-with-xdrip.sh)"
