@@ -20,7 +20,7 @@ mkdir -p $LOOP_DIR
 cd $LOOP_DIR
 pwd
 echo "# Download LoopWorkspace master branch from github"
-git clone -branch=$LOOP_WORKSPACE_BRANCH --recurse-submodules $LOOP_WORKSPACE_URL
+git clone --branch=$LOOP_WORKSPACE_BRANCH --recurse-submodules $LOOP_WORKSPACE_URL
 
 cd LoopWorkspace
 echo "# Adding xDripClient submodule from $XDRIP_CLIENT_URL branch $XDRIP_CLIENT_BRANCH"
