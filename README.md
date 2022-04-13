@@ -1,6 +1,6 @@
 # BuildScripts
 
-These scripts simplify some tasks for building Loop and FreeAPS.
+These scripts simplify some tasks for building Loop (Master) and support for xDrip client
 
 ### Workspace Build Prep
 This script downloads the latest Loop master code (v2.2.9) from LoopWorkspace and patches it to enable xDripClient
